@@ -19,6 +19,38 @@ Route::get('/', function () {
  * quando for necessário criar rotas onde algum argumento seja opcional (colocando ?), 
  * é necessário criar um valor padrão caso o argumento não seja passado.
  */
+Route::get('client/{id}/{name?}', function ($id, $name = "Robson Locatelli"){
+    return view('client-name')
+        ->with('id', $id)
+        ->with('name', $name)
+        ->with('conteudo', "Variável existe!");
+    /*return view('client-name', [
+        'id' => $id,
+        'name' => $name
+    ]);*/
+})->where(['id' => '[0-9]+', 'name' => '[aA-zZ]+']);
+
+Route::get('client', function(){
+    return view('client');
+});
+
+Route::get('if-for', function(){
+    return view('if-for');
+});
+
+/**
+ * rotas para fazer uma requisição POST
+ */
+
+Route::post('cliente', function(Request $request){
+    return $request->get('value');
+})->name('client.store');
+
+/**
+ * quando for necessário criar rotas onde algum argumento seja opcional (colocando ?), 
+ * é necessário criar um valor padrão caso o argumento não seja passado.
+ */
+/*
 Route::get('rota/{id}/{name?}', function ($id, $name = "Usuário"){
     return "Cliente $id, $name";
 })->where(['id' => '[0-9]+', 'name' => '[a-z]+']);
@@ -40,11 +72,12 @@ HTML;
 
     return $html;
 });
-
+*/
 /**
  * rotas para fazer uma requisição POST
  */
-
+/*
 Route::post('cliente', function(Request $request){
     return $request->get('value');
 })->name('client.store');
+*/

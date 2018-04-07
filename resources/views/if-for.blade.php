@@ -35,5 +35,21 @@
         <?php $k++; ?>
     @endwhile
 
+    <p>====FOREACH====</p>
+
+    <?php $array = [1,2,3,4,5]; ?>
+    @foreach($array as $value)
+        <p>Chave: {{ $loop->index }}, Valor: {{$value}}</p>
+    @endforeach
+
+    <p>====FORELSE====</p>
+
+    <?php $arrays = [] ?>
+    @forelse($arrays as $values)
+        <p>Chave: {{ $loop->index }}, Valor: {{$values}}</p>
+        @empty
+        <p>Nenhum elemento no array</p>
+    @endforelse
+
 </body>
 </html>

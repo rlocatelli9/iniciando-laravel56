@@ -15,11 +15,16 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+//route::<tipoRequisicao>(<URIrota>, function())
+Route::get('client', 'ClientsController@create');
+
+Route::post('cliente', 'ClientsController@store')->name('client.store');
+
 /**
  * quando for necessário criar rotas onde algum argumento seja opcional (colocando ?), 
  * é necessário criar um valor padrão caso o argumento não seja passado.
  */
-Route::get('client/{id}/{name?}', function ($id, $name = "Robson Locatelli"){
+/*Route::get('client/{id}/{name?}', function ($id, $name = "Robson Locatelli"){
     return view('client-name')
         ->with('id', $id)
         ->with('name', $name)
@@ -27,7 +32,7 @@ Route::get('client/{id}/{name?}', function ($id, $name = "Robson Locatelli"){
     /*return view('client-name', [
         'id' => $id,
         'name' => $name
-    ]);*/
+    ]);
 })->where(['id' => '[0-9]+', 'name' => '[aA-zZ]+']);
 
 Route::get('client', function(){
@@ -42,9 +47,10 @@ Route::get('if-for', function(){
  * rotas para fazer uma requisição POST
  */
 
-Route::post('cliente', function(Request $request){
+/*Route::post('cliente', function(Request $request){
     return $request->get('value');
 })->name('client.store');
+*/
 
 /**
  * quando for necessário criar rotas onde algum argumento seja opcional (colocando ?), 
